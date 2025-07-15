@@ -1,10 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useForm } from "@formspree/react";
+import { useState } from "react";
+import { useForm, ValidationError } from "@formspree/react";
 import styles from "./ContactForm.module.css";
 
 export default function ContactForm() {
+  const [state, handleSubmit] = useForm("mblkjdwz");
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -13,19 +15,6 @@ export default function ContactForm() {
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [submitStatus, setSubmitStatus] = useState<
-    "idle" | "success" | "error"
-  >("idle");
-
-  const [state, handleSubmitFormspree] = useForm("f/mblkjdwz");
-
-  useEffect(() => {
-    if (state.succeeded) {
-      setSubmitStatus("success");
-    } else if (state.errors && Object.keys(state.errors).length > 0) {
-      setSubmitStatus("error");
-    }
-  }, [state]);
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
@@ -45,7 +34,7 @@ export default function ContactForm() {
     if (!formData.phone.trim()) {
       newErrors.phone = "Telefone é obrigatório.";
     } else if (!phoneRegex.test(formData.phone)) {
-      newErrors.phone = "Formato inválido. Use 99 9 99999999.";
+      newErrors.phone = "Formato inválido. Use (99) 99999-9999.";
     }
 
     if (!formData.message.trim()) {
@@ -77,131 +66,113 @@ export default function ContactForm() {
     }
   };
 
-  const handleValidatedSubmit = async (e: React.FormEvent) => {
+  const handleValidatedSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitStatus("idle");
-
     if (!validateForm()) return;
-
-    const formElement = e.target as HTMLFormElement;
-    handleSubmitFormspree(formElement);
+    handleSubmit(e);
   };
 
   const handleSendAnother = () => {
     setFormData({ name: "", email: "", phone: "", message: "" });
     setErrors({});
-    setSubmitStatus("idle");
   };
 
+  if (state.succeeded) {
+    return (
+      <div className={styles.successMessage}>
+        ✅ Mensagem enviada com sucesso! Em breve entraremos em contato.
+        <button
+          onClick={handleSendAnother}
+          className={styles.anotherMessageButton}
+        >
+          Enviar outra mensagem
+        </button>
+      </div>
+    );
+  }
+
   return (
-    <div className={styles.formContainer}>
-      <div className={styles.formHeader}>
-        <h3 className={styles.formTitle}>Entre em contato conosco</h3>
-        <p className={styles.formSubtitle}>
-          Preencha o formulário e nossa equipe entrará em contato em breve
-        </p>
+    <form onSubmit={handleValidatedSubmit} className={styles.form} action="https://formspree.io/f/mblkjdwz" method="POST">
+      <div className={styles.inputGroup}>
+        <label htmlFor="name" className={styles.label}>
+          Nome completo *
+        </label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          value={formData.name}
+          onChange={handleInputChange}
+          className={`${styles.input} ${errors.name ? styles.inputError : ""}`}
+          placeholder="Digite seu nome completo"
+        />
+        {errors.name && <span className={styles.errorMessage}>{errors.name}</span>}
       </div>
 
-      {submitStatus === "success" ? (
-        <div className={styles.successMessage}>
-          ✅ Mensagem enviada com sucesso! Em breve entraremos em contato.
-          <button
-            onClick={handleSendAnother}
-            className={styles.anotherMessageButton}
-          >
-            Enviar outra mensagem
-          </button>
+      <div className={styles.inputGroup}>
+        <label htmlFor="email" className={styles.label}>
+          E-mail *
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleInputChange}
+          className={`${styles.input} ${errors.email ? styles.inputError : ""}`}
+          placeholder="nome@dominio.com"
+        />
+        {errors.email && <span className={styles.errorMessage}>{errors.email}</span>}
+        <ValidationError prefix="Email" field="email" errors={state.errors} />
+      </div>
+
+      <div className={styles.inputGroup}>
+        <label htmlFor="phone" className={styles.label}>
+          Telefone *
+        </label>
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          value={formData.phone}
+          onChange={handleInputChange}
+          className={`${styles.input} ${errors.phone ? styles.inputError : ""}`}
+          placeholder="(83) 91234-5678"
+          maxLength={15}
+        />
+        {errors.phone && <span className={styles.errorMessage}>{errors.phone}</span>}
+      </div>
+
+      <div className={styles.inputGroup}>
+        <label htmlFor="message" className={styles.label}>
+          Mensagem *
+        </label>
+        <textarea
+          id="message"
+          name="message"
+          value={formData.message}
+          onChange={handleInputChange}
+          className={`${styles.textarea} ${errors.message ? styles.inputError : ""}`}
+          placeholder="Conte-nos sobre seu precatório ou tire suas dúvidas"
+          rows={4}
+        />
+        {errors.message && <span className={styles.errorMessage}>{errors.message}</span>}
+        <ValidationError prefix="Message" field="message" errors={state.errors} />
+      </div>
+
+      <button
+        type="submit"
+        disabled={state.submitting}
+        className={`${styles.submitButton} ${state.submitting ? styles.submitting : ""}`}
+      >
+        {state.submitting ? "Enviando..." : "Enviar mensagem"}
+      </button>
+
+      {state.errors && Object.keys(state.errors).length > 0 && (
+        <div className={styles.errorMessage}>
+          ❌ Erro ao enviar mensagem. Tente novamente ou entre em contato via WhatsApp.
         </div>
-      ) : (
-        <form onSubmit={handleValidatedSubmit} className={styles.form}>
-          <div className={styles.inputGroup}>
-            <label htmlFor="name" className={styles.label}>
-              Nome completo *
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleInputChange}
-              className={`${styles.input} ${errors.name ? styles.inputError : ""}`}
-              placeholder="Digite seu nome completo"
-            />
-            {errors.name && (
-              <span className={styles.errorMessage}>{errors.name}</span>
-            )}
-          </div>
-
-          <div className={styles.inputGroup}>
-            <label htmlFor="email" className={styles.label}>
-              E-mail *
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleInputChange}
-              className={`${styles.input} ${errors.email ? styles.inputError : ""}`}
-              placeholder="nome@dominio.com"
-            />
-            {errors.email && (
-              <span className={styles.errorMessage}>{errors.email}</span>
-            )}
-          </div>
-
-          <div className={styles.inputGroup}>
-            <label htmlFor="phone" className={styles.label}>
-              Telefone *
-            </label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              value={formData.phone}
-              onChange={handleInputChange}
-              className={`${styles.input} ${errors.phone ? styles.inputError : ""}`}
-              placeholder="(83) 91234-5678"
-              maxLength={15}
-            />
-            {errors.phone && (
-              <span className={styles.errorMessage}>{errors.phone}</span>
-            )}
-          </div>
-
-          <div className={styles.inputGroup}>
-            <label htmlFor="message" className={styles.label}>
-              Mensagem *
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              value={formData.message}
-              onChange={handleInputChange}
-              className={`${styles.textarea} ${errors.message ? styles.inputError : ""}`}
-              placeholder="Conte-nos sobre seu precatório ou tire suas dúvidas"
-              rows={4}
-            />
-            {errors.message && (
-              <span className={styles.errorMessage}>{errors.message}</span>
-            )}
-          </div>
-
-          <button
-            type="submit"
-            disabled={state.submitting}
-            className={`${styles.submitButton} ${state.submitting ? styles.submitting : ""}`}
-          >
-            {state.submitting ? "Enviando..." : "Enviar mensagem"}
-          </button>
-
-          {submitStatus === "error" && (
-            <div className={styles.errorMessage}>
-              ❌ Erro ao enviar mensagem. Tente novamente ou entre em contato via WhatsApp.
-            </div>
-          )}
-        </form>
       )}
-    </div>
+    </form>
   );
 }

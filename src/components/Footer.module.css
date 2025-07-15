@@ -54,6 +54,13 @@
   flex-shrink: 0;
 }
 
+.errorMessage {
+  color: #dc2626;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+
 .address span:last-child {
   color: #d1d5db;
 }
