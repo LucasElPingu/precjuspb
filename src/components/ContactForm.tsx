@@ -161,7 +161,7 @@ export default function ContactForm() {
               value={formData.phone}
               onChange={handleInputChange}
               className={`${styles.input} ${errors.phone ? styles.inputError : ""}`}
-              placeholder="(83) 9 1234-5678"
+              placeholder="(83) 91234-5678"
               maxLength={15}
             />
             {errors.phone && (
