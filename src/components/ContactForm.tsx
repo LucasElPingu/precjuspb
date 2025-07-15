@@ -19,7 +19,10 @@ export default function ContactForm() {
 
   const [state, handleSubmitFormspree] = useForm("mblkjdwz");
 
+  // 👇 Loga o state atualizado sempre que mudar
   useEffect(() => {
+    console.log("Formspree State atualizado:", state);
+
     if (state.succeeded) {
       setSubmitStatus("success");
     } else if (state.errors && Object.keys(state.errors).length > 0) {
@@ -54,7 +57,12 @@ export default function ContactForm() {
     }
 
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+
+    const isValid = Object.keys(newErrors).length === 0;
+    console.log("Validação do formulário:", isValid ? "✔️ Válido" : "❌ Inválido");
+    if (!isValid) console.log("Erros encontrados:", newErrors);
+
+    return isValid;
   };
 
   const formatPhone = (value: string) => {
@@ -83,11 +91,15 @@ export default function ContactForm() {
 
   const handleValidatedSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log("📨 Enviando formulário...");
+
     setSubmitStatus("idle");
 
-    if (!validateForm()) return;
+    const isValid = validateForm();
+    if (!isValid) return;
 
     const formElement = e.target as HTMLFormElement;
+    console.log("👉 Submetendo via Formspree:", formData);
     handleSubmitFormspree(formElement);
   };
 
@@ -95,6 +107,7 @@ export default function ContactForm() {
     setFormData({ name: "", email: "", phone: "", message: "" });
     setErrors({});
     setSubmitStatus("idle");
+    console.log("🔄 Formulário resetado para novo envio.");
   };
 
   return (
@@ -213,7 +226,7 @@ export default function ContactForm() {
             {state.submitting ? "Enviando..." : "Enviar mensagem"}
           </button>
 
-          {state.errors && Object.keys(state.errors).length > 0 && (
+          {submitStatus === "error" && (
             <div className={styles.errorMessage}>
               ❌ Erro ao enviar mensagem. Tente novamente ou entre em contato via WhatsApp.
             </div>
