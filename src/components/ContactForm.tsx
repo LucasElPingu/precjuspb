@@ -18,6 +18,13 @@ export default function ContactForm() {
       {state.succeeded ? (
         <div className={styles.successMessage}>
           ✅ Mensagem enviada com sucesso! Em breve entraremos em contato.
+          <button
+            onClick={() => window.location.reload()}
+            className={styles.submitButton}
+            style={{ marginTop: "1rem" }}
+          >
+            Enviar outra mensagem
+          </button>
         </div>
       ) : (
         <form onSubmit={handleSubmit} className={styles.form}>
@@ -48,7 +55,11 @@ export default function ContactForm() {
               className={styles.input}
               placeholder="nome@dominio.com"
             />
-            <ValidationError prefix="E-mail" field="email" errors={state.errors} />
+            <ValidationError
+              prefix="E-mail"
+              field="email"
+              errors={state.errors}
+            />
           </div>
 
           <div className={styles.inputGroup}>
@@ -64,7 +75,11 @@ export default function ContactForm() {
               className={styles.input}
               placeholder="(83) 91234-5678"
             />
-            <ValidationError prefix="Telefone" field="phone" errors={state.errors} />
+            <ValidationError
+              prefix="Telefone"
+              field="phone"
+              errors={state.errors}
+            />
           </div>
 
           <div className={styles.inputGroup}>
@@ -79,13 +94,19 @@ export default function ContactForm() {
               placeholder="Conte-nos sobre seu precatório ou tire suas dúvidas"
               rows={4}
             />
-            <ValidationError prefix="Mensagem" field="message" errors={state.errors} />
+            <ValidationError
+              prefix="Mensagem"
+              field="message"
+              errors={state.errors}
+            />
           </div>
 
           <button
             type="submit"
             disabled={state.submitting}
-            className={`${styles.submitButton} ${state.submitting ? styles.submitting : ""}`}
+            className={`${styles.submitButton} ${
+              state.submitting ? styles.submitting : ""
+            }`}
           >
             {state.submitting ? "Enviando..." : "Enviar mensagem"}
           </button>
@@ -94,7 +115,8 @@ export default function ContactForm() {
 
       {state.errors && Object.keys(state.errors).length > 0 && (
         <div className={styles.errorMessage}>
-          ❌ Erro ao enviar mensagem. Tente novamente ou entre em contato via WhatsApp.
+          ❌ Erro ao enviar mensagem. Tente novamente ou entre em contato via
+          WhatsApp.
         </div>
       )}
     </div>
