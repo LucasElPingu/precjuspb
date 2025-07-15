@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Inter } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 
@@ -12,6 +12,12 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
+
 
 export const metadata: Metadata = {
   title: "PRECJUSPB – Transforme seu precatório em dinheiro",
@@ -54,7 +60,7 @@ export const metadata: Metadata = {
       "Na PRECJUSPB, você transforma seu precatório em dinheiro com segurança, agilidade e total transparência. João Pessoa - PB.",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/images/image1.png", // alterado para image1.png
         width: 1200,
         height: 630,
         alt: "PRECJUSPB - Transforme seu precatório em dinheiro",
@@ -66,7 +72,7 @@ export const metadata: Metadata = {
     title: "PRECJUSPB – Transforme seu precatório em dinheiro",
     description:
       "Na PRECJUSPB, você transforma seu precatório em dinheiro com segurança, agilidade e total transparência. João Pessoa - PB.",
-    images: ["/og-image.jpg"],
+    images: ["/images/image1.png"], // alterado
   },
   alternates: {
     canonical: "https://precjuspb.com.br",
@@ -83,9 +89,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <head>
+        {/* Favicons e ícones */}
+        <link rel="icon" href="/images/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="144x144" href="/images/icon-144.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/images/icon-32.png" />
+        <link rel="icon" type="image/png" sizes="48x48" href="/images/icon-48.png" />
+      </head>
+
+      <body className={`${inter.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}>
+
         {children}
 
         {/* Structured Data */}
@@ -98,7 +111,7 @@ export default function RootLayout({
               "@type": "Organization",
               name: "PRECJUSPB",
               url: "https://precjuspb.com.br",
-              logo: "https://precjuspb.com.br/logo.png",
+              logo: "https://precjuspb.com.br/images/icon-144.png",
               description:
                 "Na PRECJUSPB, você transforma seu precatório em dinheiro com segurança, agilidade e total transparência.",
               address: {

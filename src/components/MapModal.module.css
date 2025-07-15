@@ -14,7 +14,8 @@
 }
 
 .modal {
-  background: white;
+  background: #0d0d0d; /* dark black */
+  color: #ffffff; /* texto branco */
   border-radius: 16px;
   max-width: 600px;
   width: 100%;
@@ -46,7 +47,7 @@
 .title {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #1e40af;
+  color: white;
   margin: 0;
 }
 
@@ -82,12 +83,12 @@
 .address h3 {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #1e40af;
+  color: white;
   margin-bottom: 0.5rem;
 }
 
 .address p {
-  color: #6b7280;
+  color: white;
   line-height: 1.6;
   margin: 0;
 }
@@ -107,7 +108,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: #3b82f6;
+  background: #0037af;
   color: white;
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
@@ -117,7 +118,7 @@
 }
 
 .directionsButton:hover {
-  background: #2563eb;
+  background: #0037af;
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }

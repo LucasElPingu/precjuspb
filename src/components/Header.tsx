@@ -3,6 +3,7 @@
 import { useState } from "react";
 import styles from "./Header.module.css";
 import MapModal from "./MapModal";
+import Image from "next/image";
 
 export default function Header() {
   const [isMapModalOpen, setIsMapModalOpen] = useState(false);
@@ -17,6 +18,14 @@ export default function Header() {
       <header className={styles.header}>
         <div className={styles.container}>
           <div className={styles.logo}>
+            <Image
+              src="/images/favicon.ico"
+              alt="Logo da PRECJUSPB"
+              width={180}
+              height={48}
+              className={styles.logoImage}
+              priority
+            />
             <span className={styles.logoText}>PRECJUSPB</span>
           </div>
 

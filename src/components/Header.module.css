@@ -20,13 +20,20 @@
 .logo {
   display: flex;
   align-items: center;
+  gap: 4px; /* bem colado */
+}
+
+.logoImage {
+  border-radius: 8px !important;
+  width: auto;
+  height: 58px;
+  object-fit: cover !important;
+  display: block;
 }
 
 .logoText {
-  font-size: 1.75rem;
-  font-weight: 800;
-  color: #1e40af;
-  letter-spacing: -0.025em;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 .nav {
