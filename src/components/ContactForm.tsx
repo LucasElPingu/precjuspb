@@ -17,7 +17,7 @@ export default function ContactForm() {
     "idle" | "success" | "error"
   >("idle");
 
-  const [state, handleSubmitFormspree] = useForm("mblkjdwz");
+  const [state, handleSubmitFormspree] = useForm("f/mblkjdwz");
 
   useEffect(() => {
     if (state.succeeded) {
@@ -45,7 +45,7 @@ export default function ContactForm() {
     if (!formData.phone.trim()) {
       newErrors.phone = "Telefone é obrigatório.";
     } else if (!phoneRegex.test(formData.phone)) {
-      newErrors.phone = "Formato inválido. Use (83) 91234-5678.";
+      newErrors.phone = "Formato inválido. Use 99 9 99999999.";
     }
 
     if (!formData.message.trim()) {
