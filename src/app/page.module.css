@@ -6,30 +6,72 @@
 
 .main {
   flex: 1;
-  background: linear-gradient(135deg, #0b1e3d 0%, #14325a 100%);
+  position: relative;
+  background: radial-gradient(circle at top left, #14325a, #0b1e3d 70%);
   color: white;
+  overflow: hidden;
+  z-index: 0;
 }
+
+.main::before {
+  content: "";
+  position: absolute;
+  top: -100px;
+  left: -100px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.05), transparent 70%);
+  filter: blur(50px);
+  z-index: 0;
+}
+
+.main::after {
+  content: "";
+  position: absolute;
+  bottom: -150px;
+  right: -150px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.05), transparent 70%);
+  filter: blur(60px);
+  z-index: 0;
+}
+
+.heroTopImage {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.heroIcon {
+  width: auto;
+  height: 160px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  border-radius: 15px;
+}
+
 
 .hero {
   padding: 5rem 1rem;
-  background: linear-gradient(135deg, #0b1e3d 0%, #14325a 50%, #1e3a5f 100%);
   position: relative;
   overflow: hidden;
   min-height: 90vh;
   display: flex;
   align-items: center;
+  background: radial-gradient(circle at top left, #14325a, #0b1e3d 70%);
 }
+
 
 .hero::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")
-    repeat;
-  opacity: 0.3;
+  inset: 0;
+  background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.08), transparent 60%),
+              radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.04), transparent 60%),
+              url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+  opacity: 0.6;
+  z-index: 0;
 }
 
 .heroContent {
@@ -101,7 +143,7 @@
 }
 
 .ctaButton:hover {
-  background: #15803d;
+  background: #1eb856;
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(22, 163, 74, 0.4);
 }
@@ -117,7 +159,7 @@
 }
 
 .benefits {
-  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+  background: linear-gradient(180deg, #d6dee7 0%, #b7c2cc 100%);
   color: #1f2937;
   padding: 4rem 1rem;
 }
@@ -304,4 +346,57 @@
   .contactTitle {
     font-size: 1.5rem;
   }
+}
+
+/* --- Animações de entrada --- */
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Aplica a cada parte da hero */
+.heroImage {
+  animation: fadeInLeft 1s ease-out forwards;
+  opacity: 0;
+  animation-delay: 0.3s;
+}
+
+.heroText {
+  animation: fadeInRight 1s ease-out forwards;
+  opacity: 0;
+  animation-delay: 0.5s;
+}
+
+.heroForm {
+  animation: fadeInUp 1s ease-out forwards;
+  opacity: 0;
+  animation-delay: 0.7s;
 }

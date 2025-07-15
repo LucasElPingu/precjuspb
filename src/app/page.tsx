@@ -2,6 +2,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import ContactForm from "../components/ContactForm";
 import styles from "./page.module.css";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -12,6 +13,16 @@ export default function Home() {
         <section className={styles.hero} id="inicio">
           <div className={styles.heroContent}>
             <div className={styles.heroText}>
+              <div className={styles.heroTopImage}>
+                <Image
+                  src="/images/image2.png"
+                  alt="Logo da marca"
+                  width={1920}
+                  height={1080}
+                  className={styles.heroIcon}
+                  priority
+                />
+              </div>
               <h1 className={styles.headline}>
                 O tempo não para… e o seu precatório também não deveria!
               </h1>
