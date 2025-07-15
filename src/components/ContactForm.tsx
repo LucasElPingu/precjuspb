@@ -17,7 +17,7 @@ export default function ContactForm() {
     "idle" | "success" | "error"
   >("idle");
 
-  const [state, handleSubmitFormspree] = useForm("mblkjdwz");
+  const [state, handleSubmitFormspree] = useForm("f/mblkjdwz");
 
   // 👇 Loga o state atualizado sempre que mudar
   useEffect(() => {
