@@ -13,6 +13,71 @@
   z-index: 0;
 }
 
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-image: url("/images/bannerTop.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 2rem;
+}
+
+.heroOverlay {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  text-align: right;
+  z-index: 2;
+}
+
+.heroCtaBox {
+  max-width: 320px;
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #16a34a;
+  color: white;
+  padding: 1.25rem 2rem;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(22, 163, 74, 0.3);
+  border: 2px solid transparent;
+}
+
+.ctaButton:hover {
+  background: #1eb856;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(22, 163, 74, 0.4);
+}
+
+.ctaSubtext {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.2rem;
+  font-weight: 1000;
+  font-size: 1rem;
+  color: blue;
+  opacity: 0.8;
+  
+}
+
+.ctaIcon {
+  font-size: 1.2rem;
+}
+
+/* ---- Restante do seu CSS permanece igual ---- */
+
 .heroTopImage {
   display: flex;
   justify-content: center;
@@ -25,29 +90,6 @@
   object-fit: contain;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
   border-radius: 15px;
-}
-
-
-.hero {
-  padding: 5rem 1rem;
-  position: relative;
-  overflow: hidden;
-  min-height: 90vh;
-  display: flex;
-  align-items: center;
-  background: #00245C;
-}
-
-
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.08), transparent 60%),
-              radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.04), transparent 60%),
-              url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
-  opacity: 0.6;
-  z-index: 0;
 }
 
 .heroContent {
@@ -96,42 +138,6 @@
   border-radius: 12px;
   border-left: 4px solid #fbbf24;
   font-weight: 600;
-}
-
-.ctaSection {
-  margin-top: 2rem;
-}
-
-.ctaButton {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  background: #16a34a;
-  color: white;
-  padding: 1.25rem 2rem;
-  border-radius: 50px;
-  font-size: 1.1rem;
-  font-weight: 700;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(22, 163, 74, 0.3);
-  border: 2px solid transparent;
-}
-
-.ctaButton:hover {
-  background: #1eb856;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(22, 163, 74, 0.4);
-}
-
-.ctaIcon {
-  font-size: 1.2rem;
-}
-
-.ctaSubtext {
-  margin-top: 1rem;
-  font-size: 0.9rem;
-  opacity: 0.8;
 }
 
 .benefits {
@@ -247,8 +253,24 @@
   font-size: 1.2rem;
 }
 
-/* Responsividade */
+/* Responsivo */
+
 @media (max-width: 1024px) {
+  .hero {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .heroOverlay {
+    position: static;
+    margin-top: auto;
+  }
+
+  .ctaSubtext {
+    text-align: center;
+  }
+
   .heroContent {
     grid-template-columns: 1fr;
     gap: 3rem;
@@ -322,57 +344,4 @@
   .contactTitle {
     font-size: 1.5rem;
   }
-}
-
-/* --- Animações de entrada --- */
-@keyframes fadeInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes fadeInRight {
-  from {
-    opacity: 0;
-    transform: translateX(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Aplica a cada parte da hero */
-.heroImage {
-  animation: fadeInLeft 1s ease-out forwards;
-  opacity: 0;
-  animation-delay: 0.3s;
-}
-
-.heroText {
-  animation: fadeInRight 1s ease-out forwards;
-  opacity: 0;
-  animation-delay: 0.5s;
-}
-
-.heroForm {
-  animation: fadeInUp 1s ease-out forwards;
-  opacity: 0;
-  animation-delay: 0.7s;
 }

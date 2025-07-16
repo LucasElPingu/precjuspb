@@ -5,15 +5,18 @@ import styles from "./Banner.module.css";
 export default function Banner() {
   return (
     <div className={styles.banner}>
-      <Image
-        src="/images/banner.png"
-        alt="Banner Background"
-        fill
-        className={styles.bannerImage}
-        quality={100}
-        priority
-      />
-      <div className={styles.bannerContent}>
+      <div className={styles.imageContainer}>
+        <Image
+          src="/images/image2.png"
+          alt="Imagem ilustrativa"
+          width={400}
+          height={500}
+          className={styles.bannerPicture}
+          priority
+        />
+      </div>
+
+      <div className={styles.textContainer}>
         <div className={styles.scrollText}>
           <p>
             A <span className={styles.highlight}>PRECJUSPB</span> é uma empresa especializada na compra de precatórios

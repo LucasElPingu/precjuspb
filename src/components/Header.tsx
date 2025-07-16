@@ -3,14 +3,20 @@
 import { useState } from "react";
 import styles from "./Header.module.css";
 import MapModal from "./MapModal";
+import ContactModal from "./ContactModal";
 import Image from "next/image";
 
 export default function Header() {
   const [isMapModalOpen, setIsMapModalOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
   const openMapModal = () => setIsMapModalOpen(true);
   const closeMapModal = () => setIsMapModalOpen(false);
+
+  const openContactModal = () => setIsContactModalOpen(true);
+  const closeContactModal = () => setIsContactModalOpen(false);
+
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
   return (
@@ -56,6 +62,11 @@ export default function Header() {
               <button onClick={openMapModal} className={styles.contactItem}>
                 <span className={styles.icon}>📍</span>
                 <span className={styles.contactText}>Localização</span>
+              </button>
+
+              <button onClick={openContactModal} className={styles.contactItem}>
+                <span className={styles.icon}>📞</span>
+                <span className={styles.contactText}>Fale conosco</span>
               </button>
             </div>
 
@@ -111,12 +122,21 @@ export default function Header() {
                 <span className={styles.icon}>📍</span>
                 <span>Ver localização</span>
               </button>
+
+              <button
+                onClick={openContactModal}
+                className={styles.mobileContactItem}
+              >
+                <span className={styles.icon}>📞</span>
+                <span>Fale conosco</span>
+              </button>
             </div>
           )}
         </div>
       </header>
 
       <MapModal isOpen={isMapModalOpen} onClose={closeMapModal} />
+      <ContactModal isOpen={isContactModalOpen} onClose={closeContactModal} />
     </>
   );
 }
