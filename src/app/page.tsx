@@ -1,8 +1,6 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import ContactForm from "../components/ContactForm";
 import styles from "./page.module.css";
-import Image from "next/image";
 import Banner from "../components/Banner";
 
 export default function Home() {
