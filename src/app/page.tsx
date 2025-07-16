@@ -19,7 +19,9 @@ export default function Home() {
         rel="noopener noreferrer"
       >
         <span className={styles.ctaIcon}>💬</span>
+        <h3 className={styles.ctaText}>
         Transformar precatório em dinheiro agora
+        </h3>
       </a>
       <p className={styles.ctaSubtext}>
         Fale conosco no WhatsApp

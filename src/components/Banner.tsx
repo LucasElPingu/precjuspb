@@ -8,7 +8,7 @@ export default function Banner() {
       <div className={styles.imageContainer}>
         <Image
           src="/images/image2.png"
-          alt="Imagem ilustrativa"
+          alt="Logo da empresa"
           width={400}
           height={500}
           className={styles.bannerPicture}

@@ -57,6 +57,7 @@
   color: rgb(221, 190, 13);
 }
 
+/* Responsivo */
 @media (max-width: 768px) {
   .banner {
     flex-direction: column;
@@ -69,9 +70,6 @@
 
   .imageContainer {
     max-width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 
   .bannerPicture {
@@ -80,4 +78,3 @@
     height: auto;
   }
 }
-
