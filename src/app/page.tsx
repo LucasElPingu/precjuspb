@@ -3,6 +3,7 @@ import Footer from "../components/Footer";
 import ContactForm from "../components/ContactForm";
 import styles from "./page.module.css";
 import Image from "next/image";
+import Banner from "../components/Banner";
 
 export default function Home() {
   return (
@@ -63,6 +64,8 @@ export default function Home() {
           </div>
         </section>
 
+        <Banner />
+        
         <section className={styles.benefits} id="vantagens">
           <div className={styles.benefitsContent}>
             <h2 className={styles.benefitsTitle}>

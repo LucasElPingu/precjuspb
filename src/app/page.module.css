@@ -7,33 +7,9 @@
 .main {
   flex: 1;
   position: relative;
-  background: radial-gradient(circle at top left, #14325a, #0b1e3d 70%);
+  background: #00245C;
   color: white;
   overflow: hidden;
-  z-index: 0;
-}
-
-.main::before {
-  content: "";
-  position: absolute;
-  top: -100px;
-  left: -100px;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.05), transparent 70%);
-  filter: blur(50px);
-  z-index: 0;
-}
-
-.main::after {
-  content: "";
-  position: absolute;
-  bottom: -150px;
-  right: -150px;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.05), transparent 70%);
-  filter: blur(60px);
   z-index: 0;
 }
 
@@ -59,7 +35,7 @@
   min-height: 90vh;
   display: flex;
   align-items: center;
-  background: radial-gradient(circle at top left, #14325a, #0b1e3d 70%);
+  background: #00245C;
 }
 
 
@@ -91,7 +67,7 @@
 
 .heroForm {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: flex-start;
 }
 
@@ -216,7 +192,7 @@
 }
 
 .contact {
-  background: #f1f5f9;
+  background: #305fb0;
   color: #1f2937;
   padding: 4rem 1rem;
 }
@@ -231,13 +207,13 @@
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  color: #0b1e3d;
+  color: white;
 }
 
 .contactText {
   font-size: 1.1rem;
   margin-bottom: 2rem;
-  color: #64748b;
+  color: white;
 }
 
 .contactMethods {
