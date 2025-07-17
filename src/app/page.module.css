@@ -37,9 +37,10 @@
 
 .heroOverlay {
   position: absolute;
-  bottom: 2.7rem;
-  right: 25rem;
-  text-align: left;
+  bottom: 3.7rem;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  text-align: center;
   z-index: 2;
 }
 

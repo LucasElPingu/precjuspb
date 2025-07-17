@@ -19,7 +19,7 @@ export default function Home() {
         rel="noopener noreferrer"
       >
         <h3 className={styles.ctaText}>
-        Simule sua proposta agora
+        Receba sua proposta !
         </h3>
       </a>
     </div>
