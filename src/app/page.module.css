@@ -7,7 +7,7 @@
 .main {
   flex: 1;
   position: relative;
-  background: #00245C;
+  background: #0b1e3d;
   color: white;
   overflow: hidden;
   z-index: 0;
@@ -18,7 +18,7 @@
   width: 100%;
   min-height: 100vh;
   background-image: url("/images/bannerTop.png");
-  background-size: cover;
+  background-size: 90%;
   background-position: center;
   background-repeat: no-repeat;
   display: flex;
@@ -29,7 +29,7 @@
   overflow: hidden;
 
   opacity: 0;
-  transform: scale(1.05);
+  transform: scale(0.6);
   animation: heroFadeIn 1.2s ease forwards;
 }
 
@@ -38,8 +38,8 @@
 .heroOverlay {
   position: absolute;
   bottom: 2rem;
-  right: 2rem;
-  text-align: right;
+  right: 14rem;
+  text-align: left;
   z-index: 2;
 }
 

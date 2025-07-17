@@ -23,7 +23,7 @@
 
 .textContainer {
   flex: 1;
-  background: #5ea0ddf5;
+  background: #bfc5ca;
   padding: 2rem;
   border-radius: 20px;
   border: 5px solid #0b5694;
@@ -54,7 +54,7 @@
 
 .highlight {
   font-weight: 700;
-  color: rgb(221, 190, 13);
+  color: #120a8f;
 }
 
 /* Responsivo */
