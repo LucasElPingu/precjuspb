@@ -7,7 +7,7 @@
 .main {
   flex: 1;
   position: relative;
-  background: #0b1e3d;
+  background: rgb(1, 1, 56);
   color: white;
   overflow: hidden;
   z-index: 0;
@@ -18,7 +18,7 @@
   width: 100%;
   min-height: 100vh;
   background-image: url("/images/bannerTop.png");
-  background-size: 90%;
+  background-size: 100%;
   background-position: center;
   background-repeat: no-repeat;
   display: flex;
@@ -37,8 +37,8 @@
 
 .heroOverlay {
   position: absolute;
-  bottom: 2rem;
-  right: 14rem;
+  bottom: 2.7rem;
+  right: 25rem;
   text-align: left;
   z-index: 2;
 }
@@ -52,7 +52,7 @@
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
-  background: #16a34a;
+  background: #085899;
   color: white;
   padding: 1.25rem 2rem;
   border-radius: 50px;
@@ -71,7 +71,7 @@
 }
 
 .ctaButton:hover {
-  background: #1eb856;
+  background: #085899;
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(22, 163, 74, 0.4);
 }
@@ -321,10 +321,6 @@
   .heroOverlay {
     position: static;
     margin-top: auto;
-  }
-
-  .ctaSubtext {
-    text-align: center;
   }
 
   .heroContent {

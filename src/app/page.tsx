@@ -18,14 +18,10 @@ export default function Home() {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <span className={styles.ctaIcon}>💬</span>
         <h3 className={styles.ctaText}>
-        Transformar precatório em dinheiro agora
+        Simule sua proposta agora
         </h3>
       </a>
-      <p className={styles.ctaSubtext}>
-        Fale conosco no WhatsApp
-      </p>
     </div>
   </div>
 </section>
