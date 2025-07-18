@@ -19,13 +19,13 @@ Site institucional da **PRECJUS Brasil** – voltado à compra de precatórios c
 
 ## 📁 Estrutura do Projeto
 
-├── public/ # Recursos estáticos (imagens, favicon etc.)
-├── src/
-│ ├── pages/ # Páginas (App Router ou Pages Router)
-│ ├── components/ # Componentes reutilizáveis (Header, Footer, etc.)
-│ ├── styles/ # CSS Modules organizados por componente
-│ └── utils/ # Funções auxiliares
-├── .eslintrc.json # Configuração do ESLint
-├── tsconfig.json # Configuração do TypeScript
+├── public/ # Recursos estáticos (imagens, favicon etc.)<br>
+├── src/<br>
+│ ├── pages/ # Páginas (App Router ou Pages Router)<br>
+│ ├── components/ # Componentes reutilizáveis (Header, Footer, etc.)<br>
+│ ├── styles/ # CSS Modules organizados por componente<br>
+│ └── utils/ # Funções auxiliares<br>
+├── .eslintrc.json # Configuração do ESLint<br>
+├── tsconfig.json # Configuração do TypeScript<br>
 └── next.config.js # Configuração geral do Next.js
 
