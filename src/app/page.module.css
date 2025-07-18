@@ -48,6 +48,14 @@
   height: auto;
 }
 
+@media (max-width: 480px) {
+  .whatsappImage {
+    width: 60px; /* ou menor, ajuste conforme necessário */
+    margin-top: 140px;
+    margin-right: 1rem;
+  }
+}
+
 .heroOverlay {
   position: absolute;
   bottom: 3.7rem;
