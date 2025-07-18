@@ -12,6 +12,9 @@ export default function Home() {
 <section className={styles.hero} id="inicio">
   <div className={styles.heroOverlay}>
     <div className={styles.heroCtaBox}>
+      <p>
+        aaaaaaaaa
+      </p>
       <a
         href="https://wa.me/558331429255"
         className={styles.ctaButton}
