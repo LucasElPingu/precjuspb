@@ -2,6 +2,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import styles from "./page.module.css";
 import Banner from "../components/Banner";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -12,18 +13,19 @@ export default function Home() {
 <section className={styles.hero} id="inicio">
   <div className={styles.heroOverlay}>
     <div className={styles.heroCtaBox}>
-      <p>
-        aaaaaaaaa
-      </p>
       <a
         href="https://wa.me/558331429255"
-        className={styles.ctaButton}
+        className={styles.whatsappImageButton}
         target="_blank"
         rel="noopener noreferrer"
       >
-        <h3 className={styles.ctaText}>
-        Receba sua proposta !
-        </h3>
+        <Image
+          src="/images/buttonImage.png"
+          alt="Botão WhatsApp"
+          width={1920}
+          height={1080}
+          className={styles.whatsappImage}
+        />
       </a>
     </div>
   </div>
@@ -31,7 +33,7 @@ export default function Home() {
 
 
         <Banner />
-        
+
         <section className={styles.benefits} id="vantagens">
           <div className={styles.benefitsContent}>
             <h2 className={styles.benefitsTitle}>

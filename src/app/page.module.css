@@ -33,19 +33,33 @@
   animation: heroFadeIn 1.2s ease forwards;
 }
 
+.centerButtonWrapper {
+  display: flex;
+  justify-content: center;
+  padding: 0; 
+}
 
+.whatsappImageButton {
+  display: inline-block;
+}
+
+.whatsappImage {
+  width: 175px;
+  height: auto;
+}
 
 .heroOverlay {
   position: absolute;
   bottom: 3.7rem;
-  left: 40%;
+  left: 45%;
   transform: translate(-50%, -50%);
   text-align: center;
   z-index: 2;
 }
 
 .heroCtaBox {
-  max-width: 320px;
+  max-width: 300px; /* ou algo apropriado pro tamanho do botão */
+  width: 100%;
 }
 
 .ctaButton {
